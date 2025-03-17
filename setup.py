@@ -1,16 +1,9 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 setup(
-    name='bfdbg',
-    version='3.0',
-    packages=["bfdbg"],
-    package_dir = {"bfdbg":"src"},
-    description = "Simple brainfuck debugger",
-    author = "Ben Herzog",
-    author_email = "benherzog11235@gmail.com",
-    keywords = ["brainfuck","debugger"],
-    license='LICENSE.txt',
-    long_description=open('README.rst').read(),
+    name="bfdbg",               # The package name
+    version="0.1",                   # Initial version
+    packages=find_packages(),        # Automatically find packages in the directory
+    description="Compact Brainfuck debugger",
+    author="Ben Herzog",
 )
-
-

@@ -76,9 +76,23 @@ class BrainfuckDebugger:
             while(self.ip not in self.breakpoints and self.ip<len(code)): step()
         if cmd=="q":
             exit(0)
-        
+
+
+def test_helloworld():
+    dbg = BrainfuckDebugger()
+    dbg.load_code(
+        "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++."
+        ">>.<-.<.+++.------.--------.>>+.>++."
+    )
+    while not dbg.is_halted_state():
+        dbg.step()
+    assert(dbg.strip == [0, 0, 72, 100, 87, 33, 10])
+    
+
+
+
 if __name__ == "__main__":
-    cli = argparse.ArgumentParser(description="Compile assembly targeting windows")
+    cli = argparse.ArgumentParser(description="Debug Brainfuck code")
     cli.add_argument(
         "f",
         type=str,
